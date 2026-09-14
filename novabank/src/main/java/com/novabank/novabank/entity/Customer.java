@@ -1,0 +1,52 @@
+package com.novabank.novabank.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "customers")
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String accountNumber;
+
+    @Column(nullable = false, length = 50)
+    private String firstName;
+
+    @Column(nullable = false, length = 50)
+    private String lastName;
+
+    @Column(nullable = false)
+    private Double balance;
+
+    // Constructor vacío (exigido por JPA/Hibernate)
+    public Customer() {
+    }
+
+    // Constructor completo
+    public Customer(Long id, String accountNumber, String firstName, String lastName, Double balance) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.balance = balance;
+    }
+
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getAccountNumber() { return accountNumber; }
+    public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+
+    public Double getBalance() { return balance; }
+    public void setBalance(Double balance) { this.balance = balance; }
+}
